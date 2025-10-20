@@ -88,21 +88,21 @@ fn main() -> Result<(), String> {
         // Obtém o estado atual do teclado para controle contínuo
         let keyboard_state = event_pump.keyboard_state();
 
-        // Controla raquete esquerda (Jogador 1) com W e S
-        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::W) {
+        // Controla raquete esquerda (Jogador 1) com A e D
+        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::A) {
             game_state.paddle_left.move_up(delta_time);
         }
-        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::S) {
+        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::D) {
             game_state
                 .paddle_left
                 .move_down(delta_time, game_state.screen_height);
         }
 
-        // Controla raquete direita (Jogador 2) com setas para cima e para baixo
-        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::Up) {
+        // Controla raquete direita (Jogador 2) com setas esquerda e direita
+        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::Left) {
             game_state.paddle_right.move_up(delta_time);
         }
-        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::Down) {
+        if keyboard_state.is_scancode_pressed(sdl2::keyboard::Scancode::Right) {
             game_state
                 .paddle_right
                 .move_down(delta_time, game_state.screen_height);
@@ -212,7 +212,7 @@ fn render_menu(
         canvas,
         &texture_creator,
         font,
-        "JOGADOR 1: W / S",
+        "JOGADOR 1: A / D",
         SCREEN_WIDTH as i32 / 2,
         250,
         Color::RGB(200, 200, 200),
@@ -222,7 +222,7 @@ fn render_menu(
         canvas,
         &texture_creator,
         font,
-        "JOGADOR 2: SETAS",
+        "JOGADOR 2: SETAS ESQ/DIR",
         SCREEN_WIDTH as i32 / 2,
         300,
         Color::RGB(200, 200, 200),
