@@ -71,6 +71,7 @@ impl GameState {
         let paddle_right = Paddle::new(
             screen_width - paddle_offset - paddle_width,
             (screen_height - paddle_height) / 2.0,
+            paddle_width,
             paddle_height,
             paddle_speed,
         );
@@ -85,6 +86,7 @@ impl GameState {
         
         GameState {
             screen_width,
+            screen_height,
             background_color: Color::RGB(20, 20, 30),
             phase: GamePhase::Menu,
             ball,
@@ -196,7 +198,7 @@ impl GameState {
         let dash_gap = 10;
         let dash_width = 3;
         
-        let y = 0;
+        let mut y = 0;
         while y < self.screen_height as i32 {
             let rect = Rect::new(center_x - dash_width / 2, y, dash_width as u32, dash_height as u32);
             canvas.fill_rect(rect).unwrap();

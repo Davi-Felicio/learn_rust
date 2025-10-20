@@ -28,7 +28,7 @@ fn main() -> Result<(), String> {
     // Inicializa o mixer de áudio
     let _audio = sdl_context.audio()?;
     sdl2::mixer::open_audio(44_100, AUDIO_S16LSB, DEFAULT_CHANNELS, 1024)?;
-    let _ = sdl2::mixer::init(InitFlag::MP3 | InitFlag::FLAC | InitFlag::MOD | InitFlag::OGG)?;
+    let _ = sdl2::mixer::init(InitFlag::MP3 | InitFlag::OGG)?;
     sdl2::mixer::allocate_channels(4);
 
     // Cria a janela do jogo

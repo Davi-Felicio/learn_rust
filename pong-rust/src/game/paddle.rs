@@ -42,7 +42,7 @@ impl Paddle {
     /// # Argumentos
     /// 
     /// * `delta_time` - Tempo decorrido desde o último frame (em segundos)
-    pub fn move_up(self, delta_time: f32) {
+    pub fn move_up(&mut self, delta_time: f32) {
         self.y -= self.speed * delta_time;
         
         // Limita a raquete para não sair da tela (topo)
@@ -110,7 +110,7 @@ impl Paddle {
     pub fn get_rect(&self) -> Rect {
         Rect::new(
             self.x as i32,
-            self.y as u8,
+            self.y as i32,
             self.width as u32,
             self.height as u32,
         )
